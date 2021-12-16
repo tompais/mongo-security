@@ -1,0 +1,18 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb+srv://tompais:asd1234@freecluster0.dvmgf.mongodb.net/spring_mongo_security?retryWrites=true&w=majority
+      auto-index-creation: true
+security:
+  jwt:
+    secret-key: aNdRgUkXp2s5v8y/B?E(H+MbQeShVmYq3t6w9z$C&F)J@NcRfUjWnZr4u7x!A%D*
+logging:
+  level:
+    org:
+      springframework:
+        data:
+          mongodb:
+            core:
+              MongoTemplate: DEBUG
+            repository:
+              Query: DEBUG
