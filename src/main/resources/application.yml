@@ -1,7 +1,7 @@
 spring:
   data:
     mongodb:
-      uri: mongodb+srv://tompais:asd1234@freecluster0.dvmgf.mongodb.net/spring_mongo_security?retryWrites=true&w=majority
+      uri: mongodb+srv://${MONGO_USER}:${MONGO_PASS}@${MONGO_CLUSTER}.dvmgf.mongodb.net/${MONGO_DB_NAME}?retryWrites=true&w=majority
       auto-index-creation: true
 security:
   jwt:
