@@ -1,4 +1,4 @@
-package com.example.mongo_security.config
+package com.example.mongo_security.security.config
 
 import io.jsonwebtoken.JwtParser
 import io.jsonwebtoken.Jwts

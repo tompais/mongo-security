@@ -16,3 +16,11 @@ logging:
               MongoTemplate: DEBUG
             repository:
               Query: DEBUG
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+springdoc:
+  show-actuator: true
+  show-login-endpoint: true

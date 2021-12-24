@@ -4,6 +4,8 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     id("org.springframework.boot") version "2.6.1"
+    id("com.github.johnrengelman.processes") version "0.5.0"
+    id("org.springdoc.openapi-gradle-plugin") version "1.3.3"
     id("io.spring.dependency-management") version "1.0.11.RELEASE"
     id("org.asciidoctor.convert") version "1.5.8"
     kotlin("jvm") version "1.6.0"
@@ -31,6 +33,7 @@ val snippetsDir by extra { file("build/generated-snippets") }
 val ktlint: Configuration by configurations.creating
 
 dependencies {
+    // Spring Boot
     implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
     implementation("org.springframework.boot:spring-boot-starter-data-rest")
     implementation("org.springframework.boot:spring-boot-starter-security")
@@ -38,14 +41,33 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-web-services")
     implementation("org.springframework.boot:spring-boot-starter-log4j2")
+    implementation("org.springframework.boot:spring-boot-starter-actuator")
+
+    // Jackson
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+
+    // Kotlin
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+
+    // Spring Doc
+    implementation("org.springdoc:springdoc-openapi-ui:1.6.1")
+    implementation("org.springdoc:springdoc-openapi-security:1.6.1")
+    implementation("org.springdoc:springdoc-openapi-data-rest:1.6.1")
+    implementation("org.springdoc:springdoc-openapi-kotlin:1.6.1")
+
+    // JWT
     runtimeOnly("io.jsonwebtoken:jjwt-impl:0.11.2")
     implementation("io.jsonwebtoken:jjwt-api:0.11.2")
     runtimeOnly("io.jsonwebtoken:jjwt-jackson:0.11.2")
+
+    // Dev Tools
     developmentOnly("org.springframework.boot:spring-boot-devtools")
+
+    // Annotation Processor
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
+
+    // Test
     testImplementation("org.springframework.boot:spring-boot-starter-test") {
         exclude(module = "mockito-core")
     }
@@ -57,6 +79,8 @@ dependencies {
     testImplementation("io.rest-assured:rest-assured-common:4.4.0")
     testImplementation("io.rest-assured:spring-mock-mvc:4.4.0")
     testImplementation("io.rest-assured:spring-mock-mvc-kotlin-extensions:4.4.0")
+
+    // Linter
     ktlint("com.pinterest:ktlint:0.43.2") {
         attributes {
             attribute(BUNDLING_ATTRIBUTE, objects.named(EXTERNAL))

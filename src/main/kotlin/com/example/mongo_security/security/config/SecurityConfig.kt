@@ -1,4 +1,4 @@
-package com.example.mongo_security.config
+package com.example.mongo_security.security.config
 
 import com.example.mongo_security.services.interfaces.IUserService
 import org.springframework.context.annotation.Bean
@@ -49,7 +49,7 @@ class SecurityConfig(
             .sessionManagement().sessionCreationPolicy(STATELESS)
             .and()
             .authorizeRequests()
-            .antMatchers("/error").permitAll()
+            .antMatchers("/error", "/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html", "/actuator/**").permitAll()
             .antMatchers(GET, "/ping").permitAll()
             .antMatchers(POST, "/security/sign-up").permitAll()
             .anyRequest().authenticated()

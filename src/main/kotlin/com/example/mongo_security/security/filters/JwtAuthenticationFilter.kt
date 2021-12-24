@@ -34,7 +34,7 @@ class JwtAuthenticationFilter(
     @Value("\${security.jwt.secret-key}") private val secretKey: String
 ) : UsernamePasswordAuthenticationFilter(authenticationManager) {
     init {
-        this.setFilterProcessesUrl("/security/sign-in")
+        this.setFilterProcessesUrl(SecurityConstant.Authentication.ENDPOINT)
     }
 
     private companion object {
